@@ -6,7 +6,7 @@
 #
 
 """
-    auther: limuyun(limuyun@kingsoft.com)
+    auther: ucs2017@163.comy
     descrip:
 """
 import smtplib
@@ -23,7 +23,10 @@ class Email():
         try:
             smtpObj = smtplib.SMTP()
             # 连接到服务器
-            smtpObj.connect(self.mail_host, 25)
+            smtpObj.connect(self.mail_host)
+            smtpObj.ehlo()
+            smtpObj.starttls()
+
             # 登录到服务器
             smtpObj.login(self.mail_user, self.mail_pass)
             return smtpObj
@@ -47,13 +50,13 @@ if __name__ == '__main__':
     # 163邮箱服务器地址
     mail_host = 'smtp.163.com'
     # 163用户名
-    mail_user = 'limuyun1989'
+    mail_user = 'yucs2017@163.com'
     # 密码(部分邮箱为授权码)
-    mail_pass = '**********'
+    mail_pass = '******'
     # 邮件发送方邮箱地址
-    sender = 'limuyun1989@163.com'
+    sender = 'yucs2017@163.com'
     # 邮件接受方邮箱地址，注意需要[]包裹，这意味着你可以写多个邮件地址群发
-    receivers = ['83363436@qq.com']
+    receivers = ['1207467209@qq.com']
 
     # 设置email信息
     # 邮件内容设置

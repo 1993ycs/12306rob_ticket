@@ -6,7 +6,7 @@
 #
 
 """
-    auther: limuyun(limuyun@kingsoft.com)
+    auther: yucs2017@163.com
     descrip:
 
 通过splinter刷12306火车票
@@ -127,6 +127,9 @@ class BrushTicket(object):
         self.driver.visit(self.ticket_url)
         try:
             print('开始刷票……')
+            title_start = '开始抢票'
+           # self.send_mail(self.receiver_email, '开始抢票' + self.from_time +
+            #               '的车票，请关注邮箱抢票通知', title_start)
             # 加载车票查询信息
             self.driver.cookies.add({"_jc_save_fromStation": self.from_station})
             self.driver.cookies.add({"_jc_save_toStation": self.to_station})
@@ -186,7 +189,8 @@ class BrushTicket(object):
                             print('预订成功，请及时前往支付……')
                             # 发送通知信息
                             title = '抢票票成功！！'
-                            self.send_mail(self.receiver_email, '恭喜您，抢到了' + self.from_time + '的车票，请及时前往12306支付订单！',title)
+                            self.send_mail(self.receiver_email, '恭喜您，抢到了' + self.from_time +
+                                           '的车票，请及时前往12306支付订单！',title)
                     else:
                         print('不存在当前车次【%s】，已结束当前刷票，请重新开启！' % self.number)
                         sys.exit(1)
@@ -198,13 +202,13 @@ class BrushTicket(object):
     def send_mail(self, receiver_address, content, title):
         mail_host = 'smtp.163.com'
         # 163用户名
-        mail_user = 'limuyun1989'
+        mail_user = 'yucs2017@163.com'
         # 密码(部分邮箱为授权码)
         mail_pass = '*******'
         # 邮件发送方邮箱地址
-        sender = 'limuyun1989@163.com'
+        sender = 'yucs2017@163.com'
         # 邮件接受方邮箱地址，注意需要[]包裹，这意味着你可以写多个邮件地址群发
-        receivers_list = ['******@qq.com', receiver_address]
+        receivers_list = ['1207467209@qq.com', receiver_address]
 
         email = Email(mail_host, mail_user, mail_pass)
 
